@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/Colaboradors")
+@RequestMapping("/colaborador")
 public class ColaboradorController {
 
     @Autowired
@@ -36,7 +36,7 @@ public class ColaboradorController {
     @PostMapping
     public ResponseEntity<ColaboradorDto> cadastrar(@RequestBody @Valid ColaboradorDto dto, UriComponentsBuilder uriBuilder) {
         ColaboradorDto colaborador = service.criarColaborador(dto);
-        URI endereco = uriBuilder.path("/Colaboradors/{id}").buildAndExpand(colaborador.getId()).toUri();
+        URI endereco = uriBuilder.path("/colaborador/{id}").buildAndExpand(colaborador.getId()).toUri();
 
         return ResponseEntity.created(endereco).body(colaborador);
     }
